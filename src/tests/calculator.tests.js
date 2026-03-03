@@ -1,7 +1,33 @@
 // calculator.tests.js
 // Unit tests for calculator functions using Jest
 
-const { add, subtract, multiply, divide } = require('../calculator-module');
+const { add, subtract, multiply, divide, modulo, power, squareRoot } = require('../calculator-module');
+
+// Extended operation tests
+
+describe('Calculator Extended Operations', () => {
+  test('modulo: 5 % 2 = 1', () => {
+    expect(modulo(5, 2)).toBe(1);
+  });
+  test('power: 2 ^ 3 = 8', () => {
+    expect(power(2, 3)).toBe(8);
+  });
+  test('square root: sqrt(16) = 4', () => {
+    expect(squareRoot(16)).toBe(4);
+  });
+});
+
+describe('Calculator Extended Edge Cases', () => {
+  test('modulo with negative numbers', () => {
+    expect(modulo(-5, 2)).toBe(-1);
+  });
+  test('power with zero exponent', () => {
+    expect(power(5, 0)).toBe(1);
+  });
+  test('square root of negative throws error', () => {
+    expect(() => squareRoot(-9)).toThrow('Square root of negative number');
+  });
+});
 
 describe('Calculator Basic Operations', () => {
   test('addition: 2 + 3 = 5', () => {
